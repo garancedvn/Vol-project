@@ -46,7 +46,7 @@ for dt in entries_enter_trade:
     iv_entry = BASE.at[dt, "IV_30d_proxy"]
     rv21_forecast = BASE.at[dt, "GARCH_RV21_forecast"]
 
-    if pd.isna(side) or pd.isna(iv_entry) or pd.isna(rv_fwd):
+    if pd.isna(side) or pd.isna(iv_entry) or pd.isna(rv21_forecast):
         continue
 
     pnl = ((rv21_forecast - iv_entry) * side * scale)
@@ -60,6 +60,6 @@ for dt in entries_enter_trade:
         "pnl": pnl
 
     })
-    
+
 trades_df = pd.DataFrame(trades).set_index("entry_dt").sort_index()
 
