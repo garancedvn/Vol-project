@@ -10,7 +10,12 @@ def sharpe(daily):
 
 
 DATA_DIR = "data"
-BASE = pd.read_csv(os.path.join(DATA_DIR, "market_base.csv"), parse_dates=["Date"], index_col="Date")
+BASE = pd.read_csv(os.path.join(DATA_DIR, "market_base.csv"), 
+                   skiprows = 2,
+                   parse_dates=["Date"], 
+                   index_col="Date")
+
+print(BASE.columns)
 
 rets = BASE["ret"].dropna()
 rolling_window = 750

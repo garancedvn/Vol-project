@@ -24,5 +24,5 @@ df["RV21_fwd"] = (
     np.sqrt(252) * df["ret"].shift(-1).rolling(window).apply(lambda x: np.sqrt(np.mean(x**2)))
 )
 
-df.to_csv(os.path.join(DATA_DIR, "market_base.csv"))
-print("Saved -> data/market_base.csv  (cols: SPY_Close, VIX_IV_30d, ret, RV21_fwd)")
+df.to_csv(os.path.join(DATA_DIR, "market_raw.csv"))
+print("Saved -> data/market_raw.csv  (cols: SPY_Close, VIX_IV_30d, ret, RV21_fwd)")
